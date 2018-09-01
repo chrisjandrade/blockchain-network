@@ -1,9 +1,11 @@
 @import "node_modules/vis/dist/vis.css";
 
 .vis-network-component {
-  height: 80vh;
-  width: 75vw;
-
+  padding: 0 0 0 0;
+  margin: 15px 15px;
+  height: calc(100% - 30px);
+  width: calc(100% - 30px);
+  
   .network-container {
     height: 100%;
     width: 100%;

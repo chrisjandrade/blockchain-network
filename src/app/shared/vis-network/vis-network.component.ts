@@ -9,29 +9,22 @@ import { random } from 'lodash';
 })
 export class VisNetworkComponent implements OnInit {
 
-  @Input('data') data: any[];
+  // see http://visjs.org/docs/network/ for documentation on nodes, edges and options
+  @Input('nodes') nodes: any[];
+  @Input('edges') edges: any[];
   @Input('options') options: any;
 
   @ViewChild('networkContainer') container: ElementRef;
   
   network: Network;
 
-  constructor() { }
+  ngOnInit() { 
+    const { nodes, edges, options } = this;
 
-  ngOnInit() {
-    let nodes = [];
-    for (let i = 0, end = 10; i < end; i++) {
-      nodes.push({ id: i, label: `node ${i}` });
-    }
-    nodes = new DataSet(nodes);
-
-    let edges = [];
-    for (let i = 0, end = 10; i < end; i++) {
-      edges.push({ from: i, to: random(i, 9) });
-    }
-    edges = new DataSet(edges);
-      
-    this.network = new Network(this.container.nativeElement, { nodes, edges }, {});
+    this.network = new Network(
+      this.container.nativeElement,
+      { nodes: new DataSet(nodes), edges: new DataSet(edges) },
+      options || {});
   }
 
 }
