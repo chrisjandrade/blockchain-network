@@ -1,0 +1,11 @@
+@import "node_modules/vis/dist/vis.css";
+
+.vis-network-component {
+  height: 80vh;
+  width: 75vw;
+
+  .network-container {
+    height: 100%;
+    width: 100%;
+  }
+}
